@@ -2,6 +2,7 @@
   "expo": {
     "name": "tiWebViewApp",
     "slug": "tiWebViewApp",
+    "sdkVersion": "51.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -12,10 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.jandiweb.primavera-pizze-wickede"
     },
     "android": {
-      "package": "de.jandiweb",
+      "package": "com.dimitri11552.tiWebViewApp",
       "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -24,6 +26,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cca0aaf9-dc90-4800-8601-9d8701520184"
+      }
     }
   }
 }
