@@ -10,4 +10,6 @@ npx expo start --android
 Build:
 eas build
 
+eas build -p android --profile preview
+
 npx expo-doctor
