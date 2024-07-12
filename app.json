@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Primavera",
-    "slug": "Primavera Wickede",
+    "name": "PrimShop",
+    "slug": "PrimShop",
     "sdkVersion": "51.0.0",
     "version": "1.0.0",
     "orientation": "default",
@@ -14,7 +14,7 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.jandiweb.primavera-pizze-wickede"
+      "bundleIdentifier": "com.jandiweb.PrimShop"
     },
     "android": {
       "package": "com.dimitri11552.PrimaveraWickede",
@@ -29,7 +29,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "cca0aaf9-dc90-4800-8601-9d8701520184"
+        "projectId": "f7b24e52-a895-496d-95ea-f64464d17e92"
       }
     }
   }
