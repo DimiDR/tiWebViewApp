@@ -7,7 +7,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <WebView
         source={{
-          // uri: "https://bestellen.primavera-pizza-wickede.de/default/menus",
+          //uri: "https://bestellen.primavera-pizza-wickede.de/default/menus",
           uri: "https://dimitrir14.sg-host.com/loc1/menus",
         }}
         style={styles.webview}
