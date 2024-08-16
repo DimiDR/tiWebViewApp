@@ -70,7 +70,8 @@ const App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TouchableOpacity style={styles.header} onPress={() => setSelectedUrl(COMPANY_WEBSITE_URL)}>
+    {/* <TouchableOpacity style={styles.header} onPress={() => setSelectedUrl(COMPANY_WEBSITE_URL)}> */}
+      <TouchableOpacity style={styles.header} >
         <Image source={{ uri: COMPANY_LOGO_URL }} style={styles.companyLogo} />
         <Text style={styles.headerText}>Jandi Restaurants</Text>
       </TouchableOpacity>
