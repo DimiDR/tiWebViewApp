@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Jandi Restaurants",
-    "slug": "Jandi Restaurants",
+    "slug": "Jandi-Restaurants",
     "sdkVersion": "51.0.0",
     "version": "1.0.0",
     "orientation": "default",
@@ -29,7 +29,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "f7b24e52-a895-496d-95ea-f64464d17e92"
+        "projectId": "eae7b560-54d1-435b-9b8d-735f9bf8355e"
       }
     }
   }
