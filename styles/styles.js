@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: '#fff', // White text color
+    flex: 1,
   },
   item: {
     backgroundColor: '#fff',
@@ -45,6 +46,9 @@ const styles = StyleSheet.create({
   itemContent: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  textContent: {
+    flex: 1,
   },
   logoImage: { 
     width: 70,
