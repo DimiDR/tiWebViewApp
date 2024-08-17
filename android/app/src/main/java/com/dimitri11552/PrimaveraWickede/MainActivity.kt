@@ -1,4 +1,4 @@
-package com.dimitri11552.PrimaveraWickede
+package com.jandiweb.Restaurants
 
 import android.os.Build
 import android.os.Bundle

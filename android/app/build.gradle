@@ -83,9 +83,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace 'com.dimitri11552.PrimaveraWickede'
+    namespace 'com.jandiweb.Restaurants'
     defaultConfig {
-        applicationId 'com.dimitri11552.PrimaveraWickede'
+        applicationId 'com.jandiweb.Restaurants'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
