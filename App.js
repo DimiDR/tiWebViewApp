@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, FlatList, View, Text, Image, TouchableOpacity, BackHandler, RefreshControl } from "react-native";
+import { SafeAreaView, FlatList, View, Text, Image, TouchableOpacity, BackHandler, RefreshControl, Platform } from "react-native";
 import { WebView } from "react-native-webview";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './styles/styles'; // Import styles
@@ -126,6 +126,14 @@ const App = () => {
   if (selectedUrl) {
     return (
       <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          {Platform.OS === 'ios' && (
+            <TouchableOpacity onPress={() => setSelectedUrl(null)}>
+              <FontAwesome name="arrow-left" size={24} color="#fff" />
+            </TouchableOpacity>
+          )}
+          <Text style={styles.headerText}>Jandi Restaurants</Text>
+        </View>
         <WebView source={{ uri: selectedUrl }} style={styles.webview} />
       </SafeAreaView>
     );

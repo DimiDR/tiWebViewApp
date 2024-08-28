@@ -27,3 +27,8 @@ npx expo-doctor
 Update packeges: npx expo install --check
 
 eas credentials
+
+
+Submit app - https://www.youtube.com/watch?v=wsaautyq00g
+- Build first in Ios or Android: eas build
+- Submit to Platform: npx eas submit --platform ios
