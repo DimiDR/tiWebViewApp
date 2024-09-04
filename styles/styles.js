@@ -12,13 +12,18 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center', // Center the content
     padding: 15,
     backgroundColor: '#4CAF50', // Green background color
-    elevation: 4, // Shadow for Android
-    shadowColor: '#000', // Shadow for iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    position: 'relative', // Ensure absolute positioning of back button works
+  },
+  headerDetail: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center', // Center the content
+    padding: 19,
+    backgroundColor: '#4CAF50', // Green background color
+    position: 'relative', // Ensure absolute positioning of back button works
   },
   companyLogo: {
     width: 40,
@@ -30,6 +35,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff', // White text color
     flex: 1,
+    textAlign: 'center', // Center the text
   },
   item: {
     backgroundColor: '#fff',
@@ -75,6 +81,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 18,
     color: '#888', // Gray text color
+  },
+  loadingContainer: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent background
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 1, // Ensure it appears above other elements
+  },
+  loadingIndicator: {
+    zIndex: 2, // Ensure it appears above the background
   },
 });
 

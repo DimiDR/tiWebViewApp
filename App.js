@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, FlatList, View, Text, Image, TouchableOpacity, BackHandler, RefreshControl, Platform } from "react-native";
+import { SafeAreaView, FlatList, View, Text, Image, TouchableOpacity, BackHandler, RefreshControl, ActivityIndicator } from "react-native";
 import { WebView } from "react-native-webview";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styles from './styles/styles'; // Import styles
@@ -15,6 +15,7 @@ const App = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [loadingWebView, setLoadingWebView] = useState(false); // New state for loading indicator
 
   const fetchData = () => {
     setRefreshing(true);
@@ -107,7 +108,10 @@ const App = () => {
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.item} onPress={() => setSelectedUrl(item.url)}>
+    <TouchableOpacity style={styles.item} onPress={() => {
+      setSelectedUrl(item.url);
+      setLoadingWebView(true); // Show loading indicator
+    }}>
       <Image source={{ uri: item.headerImage }} style={styles.headerImage} />
       <View style={styles.itemContent}>
         <Image source={{ uri: item.logoImage }} style={styles.logoImage} />
@@ -126,15 +130,20 @@ const App = () => {
   if (selectedUrl) {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          {Platform.OS === 'ios' && (
-            <TouchableOpacity onPress={() => setSelectedUrl(null)}>
-              <FontAwesome name="arrow-left" size={24} color="#fff" />
-            </TouchableOpacity>
-          )}
+        <TouchableOpacity onPress={() => setSelectedUrl(null)} style={styles.headerDetail}>
+          <FontAwesome name="arrow-left" size={30} color="#fff" />
           <Text style={styles.headerText}>Jandi Restaurants</Text>
-        </View>
-        <WebView source={{ uri: selectedUrl }} style={styles.webview} />
+        </TouchableOpacity>
+        {loadingWebView && (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator size="large" color="#4CAF50" style={styles.loadingIndicator} />
+          </View>
+        )}
+        <WebView 
+          source={{ uri: selectedUrl }} 
+          style={styles.webview} 
+          onLoadEnd={() => setLoadingWebView(false)} // Hide loading indicator when the WebView finishes loading
+        />
       </SafeAreaView>
     );
   }
