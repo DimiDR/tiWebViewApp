@@ -20,7 +20,8 @@ npx expo start --android
 Build:
 eas build
 
-eas build -p android --profile preview --local
+For APK:
+eas build -p android --profile preview
 
 npx expo-doctor
 
