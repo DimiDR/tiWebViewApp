@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { SafeAreaView, FlatList, View, Text, Image, TouchableOpacity, BackHandler, RefreshControl, ActivityIndicator } from "react-native";
 import { WebView } from "react-native-webview";
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -16,6 +16,9 @@ const App = () => {
   const [favorites, setFavorites] = useState([]);
   const [showFavorites, setShowFavorites] = useState(false);
   const [loadingWebView, setLoadingWebView] = useState(false); // New state for loading indicator
+  const webViewRef = useRef(null); // Reference for WebView
+  const [canGoBack, setCanGoBack] = useState(false); // State to track if WebView can go back
+  const initialUrl = useRef(null); // Track the initial URL
 
   const fetchData = () => {
     setRefreshing(true);
@@ -76,19 +79,24 @@ const App = () => {
     loadShowFavorites();
   }, []);
 
+  const handleBackNavigation = () => {
+    if (selectedUrl) {
+      if (canGoBack) {
+        webViewRef.current.goBack(); // Go back in WebView
+      } else {
+        setSelectedUrl(null); // Exit WebView and return to the app
+      }
+    }
+  };
+
   useEffect(() => {
     const backAction = () => {
-      if (selectedUrl) {
-        setSelectedUrl(null);
-        return true; // Prevent default back action
-      }
-      return false; // Allow default back action
+      handleBackNavigation();
+      return true; // Prevent default back action
     };
-
     const backHandler = BackHandler.addEventListener("hardwareBackPress", backAction);
-
     return () => backHandler.remove();
-  }, [selectedUrl]);
+  }, [selectedUrl, canGoBack]);
 
   const toggleFavorite = (restaurant) => {
     let newFavorites;
@@ -130,7 +138,7 @@ const App = () => {
   if (selectedUrl) {
     return (
       <SafeAreaView style={styles.container}>
-        <TouchableOpacity onPress={() => setSelectedUrl(null)} style={styles.headerDetail}>
+        <TouchableOpacity onPress={handleBackNavigation} style={styles.headerDetail}>
           <FontAwesome name="arrow-left" size={30} color="#fff" />
           <Text style={styles.headerText}>Jandi Restaurants</Text>
         </TouchableOpacity>
@@ -139,10 +147,17 @@ const App = () => {
             <ActivityIndicator size="large" color="#4CAF50" style={styles.loadingIndicator} />
           </View>
         )}
-        <WebView 
-          source={{ uri: selectedUrl }} 
-          style={styles.webview} 
-          onLoadEnd={() => setLoadingWebView(false)} // Hide loading indicator when the WebView finishes loading
+        <WebView
+          ref={webViewRef} // Set the reference
+          source={{ uri: selectedUrl }}
+          style={styles.webview}
+          onLoadEnd={() => setLoadingWebView(false)}
+          onNavigationStateChange={(navState) => {
+            setCanGoBack(navState.canGoBack); // Update state based on navigation state
+            if (initialUrl.current === null) {
+              initialUrl.current = navState.url; // Set the initial URL when it first loads
+            }
+          }}
         />
       </SafeAreaView>
     );
