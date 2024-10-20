@@ -17,7 +17,7 @@ https://support.google.com/googleplay/android-developer/answer/9859152?hl=de
 
 npx expo start --android
 
-Build:
+Build (AAB):
 eas build
 
 For APK:

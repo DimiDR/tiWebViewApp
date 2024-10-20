@@ -18,7 +18,7 @@ import { FontAwesome } from "@expo/vector-icons"; // Import FontAwesome for star
 const DATA_URL =
   "https://app-version.jandiweb.de/jandi-app/restaurants.json"; // Replace with your JSON URL
 const COMPANY_LOGO_URL =
-  "https://app-version.jandiweb.de/jandi-app/Logo Jandiweb.png"; // Replace with your company logo URL
+  "https://app-version.jandiweb.de/jandi-app/restaurant_logo_67.png"; // Replace with your company logo URL
 
 const App = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -215,7 +215,7 @@ const App = () => {
         data={filteredRestaurants}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
-        ListEmptyComponent={<Text style={styles.emptyMessage}>No restaurants available</Text>}
+        ListEmptyComponent={<Text style={styles.emptyMessage}>Keine Restaurants im Filter</Text>}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={fetchData} />
         }
